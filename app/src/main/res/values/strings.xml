@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Aplikasi Github User</string>
+    <string name="search">Search User</string>
+    <string name="avatar_picture">Avatar Picture</string>
+    <string name="user_name">Name</string>
+    <string name="user_type">Type</string>
+    <string name="user_username">Username</string>
+    <string name="text_count">1</string>
+    <string name="user_followers">Followers</string>
+    <string name="user_following">Following</string>
+    <string name="user_repositories">Repositories</string>
+    <string name="user_location"> Location</string>
+    <string name="user_company"> Company</string>
+    <string name="not_found">User Not Found</string>
+    <string name="created_by">created by opakpakri</string>
+    <string name="tab">Tab</string>
+    <string name="text_content">Try To Search Username</string>
+    <string name="setting">setting</string>
+    <string name="dark_mode">Dark Mode</string>
+</resources>
