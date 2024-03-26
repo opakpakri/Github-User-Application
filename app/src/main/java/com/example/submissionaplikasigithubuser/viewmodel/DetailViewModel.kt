@@ -4,7 +4,6 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.example.submissionaplikasigithubuser.api.ApiConfig
 import com.example.submissionaplikasigithubuser.data.local.FavoriteUser
 import com.example.submissionaplikasigithubuser.data.model.DetailUserResponse
@@ -47,11 +46,9 @@ class DetailViewModel(application: Application) : AndroidViewModel(application) 
     fun insert(favorite: FavoriteUser) {
         mFavoriteRepository.insert(favorite)
     }
-
     fun update(favorite: FavoriteUser) {
         mFavoriteRepository.update(favorite)
     }
-
     fun delete(favorite: FavoriteUser) {
         mFavoriteRepository.delete(favorite)
     }
