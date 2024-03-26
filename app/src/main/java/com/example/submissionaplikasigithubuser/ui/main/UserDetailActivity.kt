@@ -1,7 +1,11 @@
 package com.example.submissionaplikasigithubuser.ui.main
 
+import android.content.ClipData
+import android.content.ClipboardManager
 import android.content.ContentValues.TAG
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -35,6 +39,10 @@ class UserDetailActivity : AppCompatActivity() {
         observeViewModel()
         username = intent.getStringExtra(EXTRA_USER).toString()
         username?.let { showViewModel(it) }
+
+        binding.tvDetailUsername.setOnClickListener {
+            copyUserUrlToClipboard()
+        }
 
         viewModelDetailUser.isUserFavorite(username).observe(this) { isFavorite ->
             if (isFavorite) {
@@ -134,6 +142,12 @@ class UserDetailActivity : AppCompatActivity() {
     private fun showLoading(isLoading: Boolean) {
         this.isLoading = isLoading
         binding.progressBarDetail.visibility = if (isLoading) View.VISIBLE else View.GONE
+    }
+
+    private fun copyUserUrlToClipboard() {
+        val githubUrl = "https://github.com/$username"
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(githubUrl))
+        startActivity(intent)
     }
 
     companion object {
