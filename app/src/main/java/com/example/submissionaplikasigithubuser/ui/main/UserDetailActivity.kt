@@ -1,14 +1,19 @@
 package com.example.submissionaplikasigithubuser.ui.main
 
+import android.content.ContentValues.TAG
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.bumptech.glide.Glide
 import com.example.submissionaplikasigithubuser.R
 import com.example.submissionaplikasigithubuser.adapter.ViewPagerAdapter
+import com.example.submissionaplikasigithubuser.data.local.FavoriteUser
 import com.example.submissionaplikasigithubuser.databinding.ActivityUserDetailBinding
 import com.example.submissionaplikasigithubuser.viewmodel.DetailViewModel
 import com.google.android.material.tabs.TabLayoutMediator
@@ -18,6 +23,9 @@ class UserDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityUserDetailBinding
     private val viewModelDetailUser: DetailViewModel by viewModels()
     private var isLoading = false
+    private var imgUrl: String = ""
+    private var typeuser: String = ""
+    private var favoriteUser: FavoriteUser? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,13 +36,50 @@ class UserDetailActivity : AppCompatActivity() {
         username = intent.getStringExtra(EXTRA_USER).toString()
         username?.let { showViewModel(it) }
 
+        viewModelDetailUser.isUserFavorite(username).observe(this) { isFavorite ->
+            if (isFavorite) {
+                binding?.fabAdd?.setImageResource(R.drawable.ic_favorite)
+                binding?.fabAdd?.setOnClickListener {
+                    Toast.makeText(this, "Unfavorited", Toast.LENGTH_SHORT).show()
+                    deleteFavoriteUser()
+                }
+            } else {
+                binding?.fabAdd?.setImageResource(R.drawable.ic_favorite_border)
+                binding?.fabAdd?.setOnClickListener {
+                    Toast.makeText(this, "Favorited", Toast.LENGTH_SHORT).show()
+                    addFavoritesUser()
+                }
+            }
+        }
+    }
+
+    private fun addFavoritesUser() {
+        username?.let {
+            val favoriteUser = FavoriteUser(it)
+            favoriteUser.profilePhoto = imgUrl
+            favoriteUser.user_type = typeuser
+
+            viewModelDetailUser.insert(favoriteUser)
+        }
+    }
+
+    private fun deleteFavoriteUser() {
+        username?.let {
+            val favoriteUser = FavoriteUser(it)
+            viewModelDetailUser.delete(favoriteUser)
+        }
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.setDisplayShowTitleEnabled(false)
+        val settingsItem = menu.findItem(R.id.menu_setting)
         menu.findItem(R.id.menu_search)?.isVisible = false
+        settingsItem.setOnMenuItemClickListener {
+            startActivity(Intent(this, SettingActivity::class.java))
+            true
+        }
         return true
     }
 
@@ -76,6 +121,9 @@ class UserDetailActivity : AppCompatActivity() {
             binding.tvDetailFollowers.text = detailUser.user_follower ?: "-"
             binding.tvDetailFollowings.text = detailUser.user_following ?: "-"
 
+            favoriteUser?.login= detailUser.login
+            typeuser = detailUser.user_type
+            imgUrl = detailUser.avatar_url
         }
     }
 

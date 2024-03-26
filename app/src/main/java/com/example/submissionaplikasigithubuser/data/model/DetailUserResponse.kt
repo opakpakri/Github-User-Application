@@ -30,4 +30,7 @@ data class DetailUserResponse(
     @SerializedName("public_repos")
     val user_repository: String,
 
+    @SerializedName("type")
+    val user_type: String,
+
 )

@@ -43,6 +43,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         setupRecyclerView()
         observeViewModels()
+        binding.fabAdd.setOnClickListener{
+            val intent = Intent(this, FavoriteActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setupRecyclerView() {

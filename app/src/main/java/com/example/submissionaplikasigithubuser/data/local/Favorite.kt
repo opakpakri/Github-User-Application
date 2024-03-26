@@ -8,7 +8,10 @@ import androidx.room.PrimaryKey
 data class FavoriteUser(
     @PrimaryKey(autoGenerate = false)
     @ColumnInfo(name = "username")
-    var username: String = "",
+    var login: String = "",
+
+    @ColumnInfo(name = "type")
+    var user_type: String? = null,
 
     @ColumnInfo(name = "profilePhoto")
     var profilePhoto: String? = null

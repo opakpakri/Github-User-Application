@@ -7,12 +7,12 @@ class FavoriteHelper (private val oldFavList: List<FavoriteUser>, private val ne
     override fun getOldListSize(): Int = oldFavList.size
     override fun getNewListSize(): Int = newFavList.size
     override fun areItemsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
-        return oldFavList[oldItemPosition].username == newFavList[newItemPosition].username
+        return oldFavList[oldItemPosition].login == newFavList[newItemPosition].login
     }
 
     override fun areContentsTheSame(oldItemPosition: Int, newItemPosition: Int): Boolean {
         val oldFav = oldFavList[oldItemPosition]
         val newFav = newFavList[newItemPosition]
-        return oldFav.username == newFav.username && oldFav.profilePhoto == newFav.profilePhoto
+        return oldFav.login == newFav.login && oldFav.user_type == newFav.user_type && oldFav.profilePhoto == newFav.profilePhoto
     }
 }
