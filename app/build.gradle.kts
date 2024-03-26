@@ -27,12 +27,12 @@ android {
                 "proguard-rules.pro"
             )
             buildConfigField("String", "BASE_URL", "\"https://api.github.com/\"")
-            buildConfigField("String", "BASE_TOKEN", "\"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\"")
+            buildConfigField("String", "BASE_TOKEN", "\"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\"")
         }
 
         debug {
             buildConfigField("String", "BASE_URL", "\"https://api.github.com/\"")
-            buildConfigField("String", "BASE_TOKEN", "\"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\"")
+            buildConfigField("String", "BASE_TOKEN", "\"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\"")
         }
     }
     compileOptions {
