@@ -35,6 +35,8 @@ class UserDetailActivity : AppCompatActivity() {
         username = intent.getStringExtra(EXTRA_USER).toString()
         username?.let { showViewModel(it) }
 
+        supportActionBar?.title = username
+
         binding.tvDetailUsername.setOnClickListener {
             copyUserUrlToClipboard()
         }

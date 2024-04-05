@@ -27,6 +27,9 @@ class FavoriteActivity : AppCompatActivity() {
         setContentView(binding?.root)
         adapter = FavoriteUserAdapter()
         setupRecyclerView()
+
+        supportActionBar?.title = "Favorite"
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -43,12 +46,12 @@ class FavoriteActivity : AppCompatActivity() {
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             android.R.id.home -> {
-                onBackPressed()
-                return true
+                finish()
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
@@ -56,7 +59,6 @@ class FavoriteActivity : AppCompatActivity() {
         binding?.rvUser?.layoutManager = LinearLayoutManager(this)
         binding?.rvUser?.setHasFixedSize(true)
         binding?.rvUser?.adapter = adapter
-
         binding?.progressBarFavorite?.visibility = View.VISIBLE
 
         val FavoriteViewmodel = obtainViewModel(this@FavoriteActivity)
