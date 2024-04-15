@@ -26,13 +26,17 @@ android {
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            //On line 34 and 39 thats is my old Github Personal access tokens,
+            //Change with Your Github Personal access tokens on Line 34 and 39 to run this program smoothly
+
             buildConfigField("String", "BASE_URL", "\"https://api.github.com/\"")
-            buildConfigField("String", "BASE_TOKEN", "\"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\"")
+            buildConfigField("String", "BASE_TOKEN", "\"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\"")
         }
 
         debug {
             buildConfigField("String", "BASE_URL", "\"https://api.github.com/\"")
-            buildConfigField("String", "BASE_TOKEN", "\"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\"")
+            buildConfigField("String", "BASE_TOKEN", "\"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\"")
         }
     }
     compileOptions {
