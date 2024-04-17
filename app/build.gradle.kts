@@ -31,12 +31,12 @@ android {
             //Change with Your Github Personal access tokens on Line 34 and 39 to run this program smoothly
 
             buildConfigField("String", "BASE_URL", "\"https://api.github.com/\"")
-            buildConfigField("String", "BASE_TOKEN", "\"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\"")
+            buildConfigField("String", "BASE_TOKEN", "\"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\"")
         }
 
         debug {
             buildConfigField("String", "BASE_URL", "\"https://api.github.com/\"")
-            buildConfigField("String", "BASE_TOKEN", "\"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\"")
+            buildConfigField("String", "BASE_TOKEN", "\"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\"")
         }
     }
     compileOptions {
@@ -88,5 +88,7 @@ dependencies {
     implementation("com.google.android.material:material:1.11.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.7.7")
     implementation("androidx.navigation:navigation-fragment-ktx:2.7.7")
+
+    implementation("pl.droidsonroids.gif:android-gif-drawable:1.2.17")
 
 }

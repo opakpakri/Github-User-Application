@@ -2,13 +2,13 @@ package com.example.submissionaplikasigithubuser.ui.main
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.example.submissionaplikasigithubuser.R
 import com.example.submissionaplikasigithubuser.adapter.ViewPagerAdapter
@@ -78,7 +78,8 @@ class UserDetailActivity : AppCompatActivity() {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.setTitle("$username")
+        //supportActionBar?.setDisplayShowTitleEnabled(false)
         val settingsItem = menu.findItem(R.id.menu_setting)
         menu.findItem(R.id.menu_search)?.isVisible = false
         settingsItem.setOnMenuItemClickListener {

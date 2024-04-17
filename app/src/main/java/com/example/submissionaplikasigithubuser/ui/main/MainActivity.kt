@@ -2,12 +2,15 @@ package com.example.submissionaplikasigithubuser.ui.main
 
 import android.app.SearchManager
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageButton
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -16,8 +19,6 @@ import com.example.submissionaplikasigithubuser.adapter.UserAdapter
 import com.example.submissionaplikasigithubuser.data.model.SearchData
 import com.example.submissionaplikasigithubuser.databinding.ActivityMainBinding
 import com.example.submissionaplikasigithubuser.viewmodel.MainViewModel
-import android.content.SharedPreferences
-import androidx.appcompat.app.AppCompatDelegate
 
 class MainActivity : AppCompatActivity() {
 
@@ -46,6 +47,22 @@ class MainActivity : AppCompatActivity() {
         binding.fabAdd.setOnClickListener{
             val intent = Intent(this, FavoriteActivity::class.java)
             startActivity(intent)
+        }
+
+        val btnfav = findViewById<ImageButton>(R.id.favorite_btn)
+        val btnsettings = findViewById<ImageButton>(R.id.setting_btn)
+        val btnprofile = findViewById<ImageButton>(R.id.profile_btn)
+
+        btnfav.setOnClickListener {
+            startActivity(Intent(this, FavoriteActivity::class.java))
+        }
+
+        btnsettings.setOnClickListener {
+            startActivity(Intent(this, SettingActivity::class.java))
+        }
+
+        btnprofile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
 
@@ -89,14 +106,18 @@ class MainActivity : AppCompatActivity() {
     private fun handleSearchListChange(searchList: List<SearchData>) {
         if (searchList.isNotEmpty()) {
             handleVisibility(binding.tvNotFound, View.GONE)
+            handleVisibility(binding.givNotfoundUser, View.GONE)
             handleVisibility(binding.rvUser, View.VISIBLE)
             handleVisibility(binding.tvTextContent, View.GONE)
+            handleVisibility(binding.givSearchUser,View.GONE)
             userAdapter.setData(ArrayList(searchList))
             binding.rvUser.adapter = userAdapter
         } else {
             handleVisibility(binding.tvNotFound, View.VISIBLE)
+            handleVisibility(binding.givNotfoundUser, View.VISIBLE)
             handleVisibility(binding.rvUser, View.GONE)
             handleVisibility(binding.tvTextContent, View.GONE)
+            handleVisibility(binding.givSearchUser,View.GONE)
         }
     }
 
@@ -148,4 +169,6 @@ class MainActivity : AppCompatActivity() {
     private fun handleProgressBarVisibility(isLoading: Boolean) {
         binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
     }
+
+
 }

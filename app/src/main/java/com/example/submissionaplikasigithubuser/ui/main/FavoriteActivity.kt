@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.view.View
+import android.widget.ImageButton
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.submissionaplikasigithubuser.R
@@ -28,14 +29,28 @@ class FavoriteActivity : AppCompatActivity() {
         adapter = FavoriteUserAdapter()
         setupRecyclerView()
 
-        supportActionBar?.title = "Favorite"
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        val btnhome = findViewById<ImageButton>(R.id.home_btn)
+        val btnsettings = findViewById<ImageButton>(R.id.setting_btn)
+        val btnprofile = findViewById<ImageButton>(R.id.profile_btn)
+
+        btnhome.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
+        btnsettings.setOnClickListener {
+            startActivity(Intent(this, SettingActivity::class.java))
+        }
+
+        btnprofile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
+        }
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         menuInflater.inflate(R.menu.menu_main, menu)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setDisplayShowTitleEnabled(false)
+        supportActionBar?.title = "Favorite"
         val settingsItem = menu.findItem(R.id.menu_setting)
         menu.findItem(R.id.menu_search)?.isVisible = false
         settingsItem.setOnMenuItemClickListener {
@@ -67,8 +82,10 @@ class FavoriteActivity : AppCompatActivity() {
             if (favoriteUsers != null && favoriteUsers.isNotEmpty()) {
                 adapter.setListData(favoriteUsers)
                 binding?.tvEmpty?.visibility = View.GONE
+                binding?.givEmptyUser?.visibility = View.GONE
             } else {
                 binding?.tvEmpty?.visibility = View.VISIBLE
+                binding?.givEmptyUser?.visibility = View.VISIBLE
                 binding?.rvUser?.visibility = View.GONE
             }
         }

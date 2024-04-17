@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import android.widget.CompoundButton
+import android.widget.ImageButton
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.submissionaplikasigithubuser.R
 import com.google.android.material.switchmaterial.SwitchMaterial
@@ -33,6 +34,22 @@ class SettingActivity : AppCompatActivity() {
             } else {
                 AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             }
+        }
+
+        val btnhome = findViewById<ImageButton>(R.id.home_btn)
+        val btnfav = findViewById<ImageButton>(R.id.favorite_btn)
+        val btnprofile = findViewById<ImageButton>(R.id.profile_btn)
+
+        btnhome.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
+
+        btnfav.setOnClickListener {
+            startActivity(Intent(this, FavoriteActivity::class.java))
+        }
+
+        btnprofile.setOnClickListener {
+            startActivity(Intent(this, ProfileActivity::class.java))
         }
     }
 
