@@ -18,12 +18,12 @@ buildTypes {
         release {
            ...
             buildConfigField("String", "BASE_URL", "\"https://api.github.com/\"")
-            buildConfigField("String", "BASE_TOKEN", "\"(ubah sesuai token milik anda)\"")
+            buildConfigField("String", "BASE_TOKEN", "\"(ubah dengan token milik anda)\"")
         }
 
         debug {
             buildConfigField("String", "BASE_URL", "\"https://api.github.com/\"")
-            buildConfigField("String", "BASE_TOKEN", "\"(ubah sesuai token milik anda)\"")
+            buildConfigField("String", "BASE_TOKEN", "\"(ubah dengan token milik anda)\"")
         }
     }
 ```
