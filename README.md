@@ -31,6 +31,6 @@ buildTypes {
 ### Certificate
 [Download Certificate](https://www.dicoding.com/certificates/EYX40D1Y5PDL)
 
-### Closing sentence 
+### Closing Sentence 
 Sebelumnya terimakasih sudah berkunjung di halaman ini semoga dapat membantu untuk teman-teman disana yang sedang mengerjakan tugas submission atau bahkan yang sedang berlatih untuk menjadi mobile develpoer.
 mohon maaf juga apabila pada halaman ini masih ada kekurangan entah itu programnya yang berantakan, program eror ketika di jalankan, pemborosan kode, dan mungkin masi banyak lainnya.
