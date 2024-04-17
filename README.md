@@ -2,7 +2,7 @@
 Projek ini dibuat sebagai syarat penilaian submision akhir course Belajar Fundamental Aplikasi Android pada platform [Dicoding](https://www.dicoding.com). Bahasa yang digunakan adalah Kotlin.
 Seperti namanya Submission ini adalah sebuah aplikasi yang bertemakan GitHub User.
 
-### Perhatian!!
+### Attention!!
 > PERHATIAN: Repository ini dihadirkan sebagai sumber referensi untuk Kelas Dicoding [Belajar Fundamental Aplikasi Android](https://www.dicoding.com/academies/14).
 Tujuannya adalah untuk membantu teman-teman dalam menyelesaikan tugas submission. Ingatlah untuk tidak sekadar menyalin dan menempelkan kode tanpa memahami prinsip-prinsip pemrogramannya.
 
